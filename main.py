@@ -2,6 +2,8 @@ import os
 import ctypes
 import tkinter as tk
 import Day01
+import Day02
+import Day05
 
 
 def button_click(number):
@@ -10,6 +12,10 @@ def button_click(number):
     match number:
         case 1:
             Day01.main(data)
+        case 2:
+            Day02.main(data)
+        case 5:
+            Day05.main(data)
         case _:
             print("Day " + str(number) + " is not yet implemented!")
     _ = input("\nPress any key to continue...")
