@@ -4,6 +4,7 @@ import tkinter as tk
 import Day01
 import Day02
 import Day05
+import Day06
 
 
 def button_click(number):
@@ -16,6 +17,8 @@ def button_click(number):
             Day02.main(data)
         case 5:
             Day05.main(data)
+        case 6:
+            Day06.main(data)
         case _:
             print("Day " + str(number) + " is not yet implemented!")
     _ = input("\nPress any key to continue...")
