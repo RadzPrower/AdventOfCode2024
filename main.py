@@ -4,6 +4,7 @@ import ctypes
 import tkinter as tk
 import Day01
 import Day02
+import Day04
 import Day05
 import Day06
 import Day07
@@ -12,12 +13,18 @@ import Day07
 def button_click(number):
     display_console()
     data = get_day_data(number)
+    if data == None:
+        print("\nNo valid data in the appropriate folder!")
+        input("\nPress any key to continue...")
+        return
     start = time.time()
     match number:
         case 1:
             Day01.main(data)
         case 2:
             Day02.main(data)
+        case 4:
+            Day04.main(data)
         case 5:
             Day05.main(data)
         case 6:
@@ -58,9 +65,14 @@ def hide_console():
 
 def get_day_data(day):
     if testing.get():
-        data = open('./test/' + str(day) + '.txt').read().splitlines()
+        source = './test/'
     else:
-        data = open('./input/' + str(day) + '.txt').read().splitlines()
+        source = './input/'
+
+    try:
+        data = open(source + str(day) + '.txt').read().splitlines()
+    except:
+        data = None
     return data
 
 
