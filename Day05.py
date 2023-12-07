@@ -11,7 +11,6 @@ def populate_lists(data):
     ranges = []
     seeds = []
     for line in data:
-        print(line)
         if "seeds: " in line:
             data = [int(i) for i in line.replace("seeds: ", "").split(" ")]
             for idx, entry in enumerate(data):
