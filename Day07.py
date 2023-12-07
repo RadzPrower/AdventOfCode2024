@@ -1,9 +1,9 @@
 from functools import cmp_to_key
 
 
-def main(input):
+def main(incoming):
     data = []
-    for idx, x in enumerate(input):
+    for idx, x in enumerate(incoming):
         data.append(x.split(" "))
     ranked_list = sorted(data, key=cmp_to_key(compare_hands))
     total_winnings = calculate_winnings(ranked_list)
@@ -51,10 +51,10 @@ def convert_card(card):
 
 
 # Find out the score of the hand from 0 (high card) to 6 (five of a kind)
-def hand(input):
-    unique_cards = set(input)
+def hand(incoming):
+    unique_cards = set(incoming)
     unique_cards.discard("J")
-    wildcards = input.count("J")
+    wildcards = incoming.count("J")
     match len(unique_cards):
         case 0:
             return 6
@@ -62,14 +62,14 @@ def hand(input):
             return 6
         case 2:
             for card in unique_cards:
-                count = input.count(card)
+                count = incoming.count(card)
                 if count == 1 or (count + wildcards) == 4:
                     return 5
                 else:
                     return 4
         case 3:
             for card in unique_cards:
-                count = input.count(card)
+                count = incoming.count(card)
                 if count == 3 or (count + wildcards) == 3:
                     return 3
             return 2
@@ -77,4 +77,3 @@ def hand(input):
             return 1
         case 5:
             return 0
-
