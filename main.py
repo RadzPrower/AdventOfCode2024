@@ -5,6 +5,7 @@ import Day01
 import Day02
 import Day05
 import Day06
+import Day07
 
 
 def button_click(number):
@@ -19,6 +20,8 @@ def button_click(number):
             Day05.main(data)
         case 6:
             Day06.main(data)
+        case 7:
+            Day07.main(data)
         case _:
             print("Day " + str(number) + " is not yet implemented!")
     _ = input("\nPress any key to continue...")

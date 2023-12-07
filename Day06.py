@@ -1,10 +1,12 @@
-def main(data):
+def main(input):
+    global data
+    data = input
     print("If you multiply together the number of ways you can win each race, the result is "
-           + str(multiply_wins(data)) + ".")
-    print("The number of ways you can win the single, long race is " + str(single_win(data)) + ".")
+           + str(multiply_wins()) + ".")
+    print("The number of ways you can win the single, long race is " + str(single_win()) + ".")
 
 
-def multiply_wins(data):
+def multiply_wins():
     final_result = 1;
     times = [int(i) for i in data[0].split()[1:]]
     distances = [int(i) for i in data[1].split()[1:]]
@@ -23,7 +25,7 @@ def multiply_wins(data):
     return final_result
 
 
-def single_win(data):
+def single_win():
     time = int("".join(data[0].split()[1:]))
     distance = int("".join(data[1].split()[1:]))
     shortest_hold = shortest_win_hold(time, distance)
@@ -45,6 +47,3 @@ def longest_win_hold(time, distance):
         result = hold * (time - hold)
         if result > distance:
             return hold
-
-
-# z = x * (y - x)
