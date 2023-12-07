@@ -34,6 +34,11 @@ def create_buttons(frame, start, end):
         button.grid(row=(i - start) // 5, column=(i - start) % 5, padx=5, pady=5)
 
 
+def create_checkbox(frame):
+    checkbox = tk.Checkbutton(frame, text="Testing", variable=testing, onvalue=True, offvalue=False)
+    checkbox.pack(padx=10, pady=5)
+
+
 def display_console():
     os.system('cls||clear')
     ctypes.windll.user32.ShowWindow(ctypes.windll.kernel32.GetConsoleWindow(), 4)
@@ -45,15 +50,11 @@ def hide_console():
 
 
 def get_day_data(day):
-    try:
+    if testing.get():
+        data = open('./test/' + str(day) + '.txt').read().splitlines()
+    else:
         data = open('./input/' + str(day) + '.txt').read().splitlines()
-    except:
-        try:
-            data = open('./test/' + str(day) + '.txt').read().splitlines()
-        except:
-            data = ""
-    finally:
-        return data
+    return data
 
 
 # Create the main window
@@ -69,6 +70,10 @@ create_buttons(button_frame, 1, 25)
 
 # Pack the frame containing buttons
 button_frame.pack(padx=10, pady=10)
+
+# Add testing checkbox
+testing = tk.BooleanVar()
+create_checkbox(root)
 
 # Start the GUI event loop
 root.mainloop()
