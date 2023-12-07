@@ -1,4 +1,5 @@
 import os
+import time
 import ctypes
 import tkinter as tk
 import Day01
@@ -11,6 +12,7 @@ import Day07
 def button_click(number):
     display_console()
     data = get_day_data(number)
+    start = time.time()
     match number:
         case 1:
             Day01.main(data)
@@ -24,6 +26,11 @@ def button_click(number):
             Day07.main(data)
         case _:
             print("Day " + str(number) + " is not yet implemented!")
+    execution_time = time.time() - start
+    if execution_time < 1:
+        print("\nExecuted in " + str(round(execution_time * 1000, 3)) + "ms")
+    else:
+        print("\nExecuted in " + str(round(execution_time, 2)) + " seconds")
     _ = input("\nPress any key to continue...")
     hide_console()
 
