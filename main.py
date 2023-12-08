@@ -8,6 +8,7 @@ import Day04
 import Day05
 import Day06
 import Day07
+import Day08
 
 
 def button_click(number):
@@ -31,11 +32,13 @@ def button_click(number):
             Day06.main(data)
         case 7:
             Day07.main(data)
+        case 8:
+            Day08.main(data)
         case _:
             print("Day " + str(number) + " is not yet implemented!")
     execution_time = time.time() - start
     if execution_time < 1:
-        print("\nExecuted in " + str(round(execution_time * 1000, 3)) + "ms")
+        print("\nExecuted in " + str(round(execution_time * 1000, 5)) + "ms")
     else:
         print("\nExecuted in " + str(round(execution_time, 2)) + " seconds")
     _ = input("\nPress any key to continue...")
