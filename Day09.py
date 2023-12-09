@@ -22,6 +22,7 @@ def extrapolate_single(sequence):
     diff_array = find_diff(sequence)
     return calculate_value(diff_array)
 
+
 def find_diff(sequence):
     diff_array = []
     new_sequence = []
