@@ -5,10 +5,12 @@ import tkinter as tk
 import Day01
 import Day02
 import Day04
+import Day03
 import Day05
 import Day06
 import Day07
 import Day08
+import Day09
 
 
 def button_click(number):
@@ -24,6 +26,8 @@ def button_click(number):
             Day01.main(data)
         case 2:
             Day02.main(data)
+        case 3:
+            Day03.main(data)
         case 4:
             Day04.main(data)
         case 5:
@@ -34,6 +38,8 @@ def button_click(number):
             Day07.main(data)
         case 8:
             Day08.main(data)
+        case 9:
+            Day09.main(data)
         case _:
             print("Day " + str(number) + " is not yet implemented!")
     execution_time = time.time() - start
