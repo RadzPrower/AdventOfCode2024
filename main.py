@@ -11,6 +11,7 @@ import Day06
 import Day07
 import Day08
 import Day09
+import Day10
 
 
 def button_click(number):
@@ -40,6 +41,8 @@ def button_click(number):
             Day08.main(data)
         case 9:
             Day09.main(data)
+        case 10:
+            Day10.main(data)
         case _:
             print("Day " + str(number) + " is not yet implemented!")
     execution_time = time.time() - start
