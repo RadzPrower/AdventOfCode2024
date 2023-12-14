@@ -19,8 +19,6 @@ def main(data):
             map_history.append(list(map(list, tilted_map)))
             match_pattern1 = []
             match_pattern2 = []
-    for idx, pattern in enumerate(match_pattern1):
-        print(f"Load for pattern #{idx}: {calculate_north_beam_load(pattern)}")
     print(f"The total load on the north beam is {calculate_north_beam_load(tilted_map)}.")
 
 
@@ -29,12 +27,6 @@ def pattern_extrapolation(pattern, i, cycles):
     remaining_cycles = cycles - i - 1
     pattern_idx = remaining_cycles % len(pattern)
     return pattern[pattern_idx]
-
-
-def print_map(print_map):
-    for line in print_map:
-        print(line)
-    print()
 
 
 def calculate_north_beam_load(rock_map):
