@@ -1,8 +1,11 @@
 def main(data):
     modules = create_modules(data)
     map_inputs(data, modules)
-    low_pulses, high_pulses = press_button(modules, 1000)
-    print(f"The total number of pulses sent was {low_pulses * high_pulses}.")
+    print(f"The number of button presses to turn on the final modules is "
+          f"{press_button(modules, 0, True)}")
+    # Part 1
+    #low_pulses, high_pulses = press_button(modules, 1000)
+    #print(f"The total number of pulses sent was {low_pulses * high_pulses}.")
 
 
 def create_modules(data):
@@ -19,6 +22,7 @@ def create_modules(data):
             result[label] = Conjunction(label)
         for output in outputs.split(", "):
             result[label].add_output(output)
+    result["rx"] = Final()
     return result
 
 
@@ -31,9 +35,11 @@ def map_inputs(data, modules):
                 modules[input].add_input(label)
 
 
-def press_button(modules, count):
+def press_button(modules, count, rx=False):
     low_pulse = 0
     high_pulse = 0
+    if count == 0:
+        count = 99999999999999999999999999
     for x in range(count):
         fifo_outputs = []
         low_pulse += 1 # button press
@@ -46,6 +52,8 @@ def press_button(modules, count):
             pulse, new_destinations = modules[destination].process_pulse(pulse, origin)
             if pulse is None:
                 continue
+            if pulse == "End":
+                return x + 1
             fifo_outputs = process_results(pulse, destination, new_destinations, fifo_outputs)
         for output in fifo_outputs:
             if output[1]:
@@ -112,3 +120,14 @@ class Broadcaster:
 
     def add_output(self, output):
         self.outputs.append(output)
+
+
+class Final:
+    def __init__(self):
+        self.label = "rx"
+
+    def process_pulse(self, pulse, input=None):
+        if pulse:
+            return None, None
+        else:
+            return "End", None
