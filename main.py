@@ -82,6 +82,10 @@ def button_click(number):
             Day22.main(data)
         case 23:
             Day23.main(data)
+        case 24:
+            Day24.main(data)
+        case 25:
+            Day25.main(data)
         case _:
             print("Day " + str(number) + " is not yet implemented!")
     execution_time = time.time() - start
@@ -130,7 +134,7 @@ def get_day_data(day):
 # Create the main window
 hide_console()
 root = tk.Tk()
-root.title("Archipelago 2023")
+root.title("Archipelago 2024")
 
 # Create a frame for the buttons
 button_frame = tk.Frame(root)
