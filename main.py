@@ -34,67 +34,65 @@ import Day25
 def button_click(number):
     data = get_day_data(number)
     result = ""
-    if data == None:
+    if data is None:
         result += "No valid data in the appropriate folder!"
         result += "\nPress any key to continue..."
         showinfo("Invalid Data", result)
         return
     title = "Day " + str(number) + " Results"
-    start = time.time()
     match number:
         case 1:
-            result += Day01.main(data)
+            day_function = Day01.main
         case 2:
-            result += Day02.main(data)
+            day_function = Day02.main
         case 3:
-            result += Day03.main(data)
+            day_function = Day03.main
         case 4:
-            result += Day04.main(data)
+            day_function = Day04.main
         case 5:
-            result += Day05.main(data)
+            day_function = Day05.main
         case 6:
-            result += Day06.main(data)
+            day_function = Day06.main
         case 7:
-            result += Day07.main(data)
+            day_function = Day07.main
         case 8:
-            result += Day08.main(data)
+            day_function = Day08.main
         case 9:
-            result += Day09.main(data)
+            day_function = Day09.main
         case 10:
-            result += Day10.main(data)
+            day_function = Day10.main
         case 11:
-            result += Day11.main(data)
+            day_function = Day11.main
         case 12:
-            result += Day12.main(data)
+            day_function = Day12.main
         case 13:
-            result += Day13.main(data)
+            day_function = Day13.main
         case 14:
-            result += Day14.main(data)
+            day_function = Day14.main
         case 15:
-            result += Day15.main(data)
+            day_function = Day15.main
         case 16:
-            result += Day16.main(data)
+            day_function = Day16.main
         case 17:
-            result += Day17.main(data)
+            day_function = Day17.main
         case 18:
-            result += Day18.main(data)
+            day_function = Day18.main
         case 19:
-            result += Day19.main(data)
+            day_function = Day19.main
         case 20:
-            result += Day20.main(data)
+            day_function = Day20.main
         case 21:
-            result += Day21.main(data)
+            day_function = Day21.main
         case 22:
-            result += Day22.main(data)
+            day_function = Day22.main
         case 23:
-            result += Day23.main(data)
+            day_function = Day23.main
         case 24:
-            result += Day24.main(data)
+            day_function = Day24.main
         case 25:
-            result += Day25.main(data)
-        case _:
-            title = "Not Yet Implemented"
-            result += "Day " + str(number) + " is not yet implemented!"
+            day_function = Day25.main
+    start = time.time()
+    result += day_function(data)
     execution_time = time.time() - start
     if execution_time < 1:
         result += "\n\nExecuted in " + str(round(execution_time * 1000, 5)) + "ms"
