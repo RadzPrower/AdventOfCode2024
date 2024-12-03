@@ -1,8 +1,9 @@
 def main(data):
      distance = calc_distance(data)
-     print("The distance between the two lists is " + str(distance) + ".")
+     result = "The distance between the two lists is " + str(distance) + "."
      similarity_score = calc_similarity_score(data)
-     print("The similarity score of the two lists is " + str(similarity_score) + ".")
+     result += "\nThe similarity score of the two lists is " + str(similarity_score) + "."
+     return result
 
 
 def calc_distance(data):

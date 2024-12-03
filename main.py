@@ -2,6 +2,8 @@ import os
 import time
 import ctypes
 import tkinter as tk
+from tkinter.messagebox import showinfo
+
 import Day01
 import Day02
 import Day04
@@ -25,76 +27,80 @@ import Day20
 import Day21
 import Day22
 import Day23
+import Day24
+import Day25
 
 
 def button_click(number):
-    display_console()
     data = get_day_data(number)
+    result = ""
     if data == None:
-        print("\nNo valid data in the appropriate folder!")
-        input("\nPress any key to continue...")
+        result += "No valid data in the appropriate folder!"
+        result += "\nPress any key to continue..."
+        showinfo("Invalid Data", result)
         return
+    title = "Day " + str(number) + " Results"
     start = time.time()
     match number:
         case 1:
-            Day01.main(data)
+            result += Day01.main(data)
         case 2:
-            Day02.main(data)
+            result += Day02.main(data)
         case 3:
-            Day03.main(data)
+            result += Day03.main(data)
         case 4:
-            Day04.main(data)
+            result += Day04.main(data)
         case 5:
-            Day05.main(data)
+            result += Day05.main(data)
         case 6:
-            Day06.main(data)
+            result += Day06.main(data)
         case 7:
-            Day07.main(data)
+            result += Day07.main(data)
         case 8:
-            Day08.main(data)
+            result += Day08.main(data)
         case 9:
-            Day09.main(data)
+            result += Day09.main(data)
         case 10:
-            Day10.main(data)
+            result += Day10.main(data)
         case 11:
-            Day11.main(data)
+            result += Day11.main(data)
         case 12:
-            Day12.main(data)
+            result += Day12.main(data)
         case 13:
-            Day13.main(data)
+            result += Day13.main(data)
         case 14:
-            Day14.main(data)
+            result += Day14.main(data)
         case 15:
-            Day15.main(data)
+            result += Day15.main(data)
         case 16:
-            Day16.main(data)
+            result += Day16.main(data)
         case 17:
-            Day17.main(data)
+            result += Day17.main(data)
         case 18:
-            Day18.main(data)
+            result += Day18.main(data)
         case 19:
-            Day19.main(data)
+            result += Day19.main(data)
         case 20:
-            Day20.main(data)
+            result += Day20.main(data)
         case 21:
-            Day21.main(data)
+            result += Day21.main(data)
         case 22:
-            Day22.main(data)
+            result += Day22.main(data)
         case 23:
-            Day23.main(data)
+            result += Day23.main(data)
         case 24:
-            Day24.main(data)
+            result += Day24.main(data)
         case 25:
-            Day25.main(data)
+            result += Day25.main(data)
         case _:
-            print("Day " + str(number) + " is not yet implemented!")
+            title = "Not Yet Implemented"
+            result += "Day " + str(number) + " is not yet implemented!"
     execution_time = time.time() - start
     if execution_time < 1:
-        print("\nExecuted in " + str(round(execution_time * 1000, 5)) + "ms")
+        result += "\n\nExecuted in " + str(round(execution_time * 1000, 5)) + "ms"
     else:
-        print("\nExecuted in " + str(round(execution_time, 2)) + " seconds")
-    _ = input("\nPress any key to continue...")
-    hide_console()
+        result += "\n\nExecuted in " + str(round(execution_time, 2)) + " seconds"
+    showinfo(title, result)
 
 
 def create_buttons(frame, start, end):
@@ -134,7 +140,7 @@ def get_day_data(day):
 # Create the main window
 hide_console()
 root = tk.Tk()
-root.title("Archipelago 2024")
+root.title("Advent of Code 2024")
 
 # Create a frame for the buttons
 button_frame = tk.Frame(root)

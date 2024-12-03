@@ -2,9 +2,10 @@ import copy
 
 def main(data):
     safe_reports = determine_safe_reports(data)
-    print("There are " + str(safe_reports) + " safe reports.")
+    result = "There are " + str(safe_reports) + " safe reports."
     dampened_safe_reports = determine_safe_reports(data, True)
-    print("With the Problem Dampener, there are " + str(dampened_safe_reports) + " safe reports.")
+    result += "\nWith the Problem Dampener, there are " + str(dampened_safe_reports) + " safe reports."
+    return result
 
 
 def determine_safe_reports(data, dampened: bool = False):
