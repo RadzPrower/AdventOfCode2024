@@ -13,7 +13,7 @@ def parse_corrupted_data(data, enable: bool = False):
     active = True
     operations = []
     for line in data:
-        operations.extend(re.findall("(?:mul\(\d+\,\d+\)|don't\(\)|do\(\))", line))
+        operations.extend(re.findall("(?:mul\(\d{1,3}\,\d{1,3}\)|don't\(\)|do\(\))", line))
     for operation in operations:
         if "mul" in operation and active:
             values = re.findall("\d+", operation)
