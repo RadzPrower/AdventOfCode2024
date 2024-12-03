@@ -18,8 +18,8 @@ def parse_corrupted_data(data, enable: bool = False):
         if "mul" in operation and active:
             values = re.findall("\d+", operation)
             result += int(values[0]) * int(values[1])
-        if operation == "don't()" and enable:
+        elif operation == "don't()" and enable:
             active = False
-        if operation == "do()" and enable:
+        elif operation == "do()" and enable:
             active = True
     return result
