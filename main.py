@@ -103,7 +103,7 @@ def button_click(number):
 
 def create_buttons(frame, start, end):
     for i in range(start, end + 1):
-        button = tk.Button(frame, text=str(i), width=5, height=2, command=lambda i=i: button_click(i))
+        button = tk.Button(frame, text=str(i), width=5, height=2, command=lambda number=i: button_click(number))
         button.grid(row=(i - start) // 5, column=(i - start) % 5, padx=5, pady=5)
 
 
